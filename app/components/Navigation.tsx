@@ -15,6 +15,9 @@ import {
 } from "lucide-react";
 import { Link, NavLink } from "react-router";
 
+// State managers
+import useDrawerOpenStore from "~/stores/useDrawerOpenStore";
+
 const drawerMenuConfig = {
   langSelector: [
     { text: "EE", code: "et" },
@@ -296,11 +299,14 @@ const NavBar = () => {
 };
 
 const Navigation = ({ children }: { children: React.ReactNode }) => {
+  const setDrawerState = useDrawerOpenStore((state) => state.setDrawerState);
+
   return (
     <div className="drawer drawer-end">
       <input
         id="my-drawer-2"
         type="checkbox"
+        onChange={(e) => setDrawerState(e.target.checked)}
         className="drawer-toggle lg:hidden"
       />
       <div className="drawer-content flex flex-col">

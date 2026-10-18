@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router";
 
-import { NavigationEyebrow, Navigation, Footer } from "~/components";
+import { NavigationEyebrow, Navigation, Footer, FAB } from "~/components";
 
 const MainLayout = () => {
   return (
@@ -11,6 +11,7 @@ const MainLayout = () => {
         <Outlet />
       </Navigation>
       <Footer />
+      <FAB />
     </>
   );
 };
