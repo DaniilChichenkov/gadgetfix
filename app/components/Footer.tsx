@@ -1,9 +1,23 @@
+// Logos
+import LogoSM from "~/src/gadgetFixLogoSM.png";
+import LogoMD from "~/src/gadgetFixLogoMD.png";
+import LogoLG from "~/src/gadgetFixLogoLG.png";
+
 const Footer = () => {
   return (
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <div className="text-gray-900 font-bold text-lg">GadgetFix</div>
+          {/* Logo */}
+          <picture>
+            <source media="(min-width: 1024px)" srcSet={LogoLG} />
+            <source media="(min-width: 768px)" srcSet={LogoMD} />
+            <img
+              src={LogoSM}
+              alt="GADGET"
+              className="w-28 md:w-36 lg:w-44 h-auto object-contain"
+            />
+          </picture>
 
           <ul className="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end">
             <li>
