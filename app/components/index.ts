@@ -1,6 +1,6 @@
 import NavigationEyebrow from "./NavigationEyebrow";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import FAB from "./FAB";
+import MobileDock from "./Dock";
 
-export { NavigationEyebrow, Navigation, Footer, FAB };
+export { NavigationEyebrow, Navigation, Footer, MobileDock };

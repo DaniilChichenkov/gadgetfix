@@ -1,6 +1,11 @@
 import React from "react";
 
-import { Smartphone, ChevronRight } from "lucide-react";
+import {
+  Smartphone,
+  ChevronRight,
+  ArrowRight,
+  ArrowUpRight,
+} from "lucide-react";
 
 import brokenScreen from "~/src/brokenScreen.png";
 import damagedCamera from "~/src/damagedCamera.png";
@@ -39,41 +44,75 @@ const servicesConfig = [
     title: "Другое",
   },
 ];
-const HomeWhatHappened = () => {
+export default function DeviceProblemsSection() {
   return (
-    <section>
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 mt-5">
-        <div className="w-full">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl text-center md:text-left">
+    <section
+      aria-labelledby="device-problems-title"
+      className="mx-auto w-full max-w-[1360px] py-8 md:py-12 px-4 lg:px-8"
+    >
+      <div className="mb-6 flex items-end justify-between gap-6">
+        <div>
+          <p className="mb-2 text-xs font-semibold tracking-widest text-blue-500 uppercase">
+            Найдём решение
+          </p>
+
+          <h2
+            id="device-problems-title"
+            className="max-w-2xl text-2xl leading-tight font-extrabold tracking-tight text-slate-950 sm:text-3xl lg:text-[34px]"
+          >
             Что случилось с вашим устройством?
           </h2>
         </div>
-        <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mt-8">
-          {servicesConfig.map((item) => (
-            <div
-              key={`what-happened-${item.title}`}
-              className="card card-md overflow-hidden bg-base-200 shadow-sm w-full"
-            >
-              <figure className="h-28 w-full overflow-hidden">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="h-full w-full object-cover object-top"
-                />
-              </figure>
 
-              <div className="card-body relative z-10 -mt-10 flex flex-row items-center justify-between rounded-t-3xl border-t border-gray-100 bg-white text-blue-500">
-                <h2 className="card-title text-center mx-auto md:text-left md:mx-0 text-md text-gray-900 wrap-break-word">
-                  {item.title}
-                </h2>
-                <ChevronRight className="shrink-0 hidden md:block" size={30} />
-              </div>
-            </div>
-          ))}
-        </div>
+        <button
+          type="button"
+          className="hidden min-h-10 shrink-0 items-center justify-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-700 transition-colors hover:border-blue-500/30 hover:bg-blue-500/5 hover:text-blue-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-500 md:inline-flex"
+        >
+          Все услуги
+          <ArrowUpRight aria-hidden="true" className="size-4" />
+        </button>
       </div>
+
+      <ul
+        role="list"
+        className="m-0 grid list-none grid-cols-2 gap-3 p-0 md:grid-cols-4 xl:grid-cols-8"
+      >
+        {servicesConfig.map((service) => (
+          <li key={service.title} className="min-w-0">
+            <button
+              type="button"
+              className="group flex h-full w-full flex-col rounded-2xl border border-slate-200/70 bg-slate-50/80 p-4 text-left transition-colors hover:border-blue-500/30 hover:bg-blue-500/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-500"
+            >
+              <div className="mb-4 flex h-24 w-full items-center justify-center overflow-hidden rounded-xl lg:h-28 xl:h-24">
+                <img
+                  src={brokenScreen}
+                  alt=""
+                  className="h-full w-full object-contain"
+                />
+              </div>
+
+              <div className="mt-auto flex min-h-10 w-full items-end justify-between gap-2">
+                <span className="text-sm leading-snug font-semibold text-slate-900 transition-colors group-hover:text-blue-500">
+                  {service.title}
+                </span>
+
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="mb-0.5 size-4 shrink-0 text-slate-400 transition-colors group-hover:text-blue-500"
+                />
+              </div>
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      <button
+        type="button"
+        className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/5 px-5 py-3 text-sm font-semibold text-blue-500 transition-colors hover:bg-blue-500/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-500 md:hidden"
+      >
+        Все услуги
+        <ArrowUpRight aria-hidden="true" className="size-4" />
+      </button>
     </section>
   );
-};
-
-export default HomeWhatHappened;
+}

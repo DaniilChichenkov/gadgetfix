@@ -2,18 +2,14 @@ import React from "react";
 
 import {
   HomeHeroSlider,
-  HomeFeaturesGrid,
   HomeWhatHappened,
   HomeGadgetTypeSelection,
-  HomeWhyChooseUs,
-  HomeTimeline,
-  HomeWorksExamples,
-  HomeHowMuchDoesItCost,
-  HomeProtectScreen,
-  HomeFeedback,
-  HomeBlog,
-  HomeFinalCTA,
   HomeLocation,
+  HomeBrands,
+  InsuranceSection,
+  MailRepairSection,
+  RepairRequestSection,
+  LocationAndBenefitsSection,
 } from "~/pages/home";
 
 export const loader = async () => {
@@ -25,18 +21,13 @@ const HomeRoute = () => {
   return (
     <>
       <HomeHeroSlider />
-      <HomeFeaturesGrid />
+      <HomeBrands />
       <HomeWhatHappened />
+      <InsuranceSection />
+      <MailRepairSection />
       <HomeGadgetTypeSelection />
-      <HomeWhyChooseUs />
-      <HomeTimeline />
-      <HomeWorksExamples />
-      <HomeHowMuchDoesItCost />
-      <HomeProtectScreen />
-      <HomeFeedback />
-      <HomeBlog />
-      <HomeFinalCTA />
-      <HomeLocation />
+      <RepairRequestSection />
+      <LocationAndBenefitsSection />
     </>
   );
 };

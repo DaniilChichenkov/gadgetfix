@@ -14,7 +14,7 @@ const FAB = () => {
   const isDrawerOpen = useDrawerOpenStore((state) => state.isOpen);
 
   return (
-    <div className={`fab ${isDrawerOpen && "hidden"}`}>
+    <div className={`fab lg:hidden ${isDrawerOpen && "hidden"}`}>
       <div
         tabIndex={0}
         role="button"

@@ -12,8 +12,14 @@ import {
   MapPin,
   ArrowRight,
   ChevronRight,
+  ArrowUpRight,
 } from "lucide-react";
 import { Link, NavLink } from "react-router";
+
+// Logos
+import LogoSM from "~/src/gadgetFixLogoSM.png";
+import LogoMD from "~/src/gadgetFixLogoMD.png";
+import LogoLG from "~/src/gadgetFixLogoLG.png";
 
 // State managers
 import useDrawerOpenStore from "~/stores/useDrawerOpenStore";
@@ -61,11 +67,19 @@ const DrawerMenu = () => {
   return (
     <ul className="menu bg-base-200 min-h-full w-11/12 md:w-6/12 p-4 rounded-bl-lg rounded-tl-lg [--menu-active-bg:transparent] [--menu-active-fg:inherit] overflow-y-scroll">
       <li>
-        <div className="w-full flex justify-between items-center">
-          <p className="font-bold text-xl">GadgetFix</p>
+        <div className="w-full flex justify-start items-center relative">
+          <picture>
+            <source media="(min-width: 1024px)" srcSet={LogoLG} />
+            <source media="(min-width: 768px)" srcSet={LogoMD} />
+            <img
+              src={LogoSM}
+              alt="GADGET"
+              className="w-28 md:w-36 lg:w-44 h-auto object-contain"
+            />
+          </picture>
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-square flex justify-center items-center rounded-lg bg-base-300"
+            className="btn btn-square flex justify-center items-center rounded-lg bg-base-300 ml-auto"
           >
             <X />
           </label>
@@ -171,130 +185,89 @@ const DrawerMenu = () => {
 
 const NavBar = () => {
   return (
-    <header className="bg-white">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-        <a className="block text-gray-700 font-bold" href="#">
-          <span className="sr-only">Home</span>
-          GadgetFix
+    <div className="navbar bg-base-100 max-w-7xl mx-auto shadow-none border-none">
+      <div className="navbar-start">
+        {/* Logo */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet={LogoLG} />
+          <source media="(min-width: 768px)" srcSet={LogoMD} />
+          <img
+            src={LogoSM}
+            alt="GADGET"
+            className="w-28 md:w-36 lg:w-44 h-auto object-contain"
+          />
+        </picture>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          {drawerMenuConfig.navLinks.map((item) => (
+            <li key={`menu-lg-${item.text}`}>
+              <a>{item.text}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="navbar-end gap-4">
+        {/* Language selector */}
+        <button
+          className="btn p-0 m-0 btn-ghost bg-transparent hover:bg-transparent active:border-none active:bg-transparent active:shadow-none hover:shadow-none"
+          popoverTarget="popover-1"
+          style={
+            { anchorName: "--language-selector-1" } /* as React.CSSProperties */
+          }
+        >
+          RU <ChevronDown />
+        </button>
+        <ul
+          className="dropdown dropdown-center menu w-32 rounded-box bg-base-100 shadow-sm flex flex-col gap-2"
+          popover="auto"
+          id="popover-1"
+          style={
+            {
+              positionAnchor: "--language-selector-1",
+            } /* as React.CSSProperties */
+          }
+        >
+          <li>
+            <a className="flex justify-between items-center bg-blue-500 text-white rounded-lg">
+              Eesti
+              <span>EE</span>
+            </a>
+          </li>
+          <li>
+            <a className="flex justify-between items-center">
+              English
+              <span>EN</span>
+            </a>
+          </li>
+          <li>
+            <a className="flex justify-between items-center">
+              Русский
+              <span>RU</span>
+            </a>
+          </li>
+        </ul>
+
+        {/* Make a request */}
+        <button className="shrink-0 btn hidden bg-blue-500 shadow-none border-blue-500 md:flex rounded-3xl text-white">
+          Оставить заявку
+          <ArrowUpRight />
+        </button>
+
+        {/* Phone */}
+        <a className="btn md:hidden btn-lg btn-circle flex justify-center items-center btn-primary bg-blue-500 shadow-none border-blue-500">
+          <Phone />
         </a>
 
-        <div className="flex flex-1 items-center justify-end lg:justify-between">
-          <nav aria-label="Global" className="hidden lg:block">
-            <ul className="flex items-center gap-6 text-sm">
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="#"
-                >
-                  {" "}
-                  Услуги{" "}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="#"
-                >
-                  {" "}
-                  Цены{" "}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="#"
-                >
-                  {" "}
-                  Наши работы{" "}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="#"
-                >
-                  {" "}
-                  О компании{" "}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="#"
-                >
-                  {" "}
-                  Блог{" "}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  className="text-gray-500 transition hover:text-gray-500/75"
-                  href="#"
-                >
-                  {" "}
-                  Контакты{" "}
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <div className="flex justify-end items-center gap-2">
-            {/* Make a request button */}
-            <button className="cursor-pointer hidden lg:inline-flex items-center justify-center rounded-lg border border-blue-500 bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus-visible:ring-4 focus-visible:ring-blue-200 focus-visible:outline-none">
-              Оставить заявку
-            </button>
-
-            {/* Mobile language selector */}
-            <details className="dropdown dropdown-center mr-1 lg:hidden">
-              <summary className="btn btn-ghost active:bg-transparent hover:bg-transparent bg-transparent p-0 m-0 flex justify-center items-center">
-                RU <ChevronDown />{" "}
-              </summary>
-              <ul className="menu dropdown-content bg-base-100 rounded-box z-1 p-2 shadow-sm w-40">
-                <li>
-                  <a className="w-full flex justify-between items-center">
-                    Eesti <span>EE</span>
-                  </a>
-                </li>
-                <li>
-                  <a className="w-full flex justify-between items-center">
-                    English <span>EN</span>
-                  </a>
-                </li>
-                <li>
-                  <a className="w-full flex justify-between items-center">
-                    Русский <span>RU</span>
-                  </a>
-                </li>
-              </ul>
-            </details>
-
-            {/* Tel to */}
-            <button className="btn btn-square flex justify-center items-center text-blue-500 btn-ghost lg:hidden">
-              <Phone />
-            </button>
-
-            {/* Open drawer */}
-            <label
-              htmlFor="my-drawer-2"
-              className="btn btn-ghost active:bg-transparent hover:bg-transparent bg-transparent btn-square flex justify-center items-center lg:hidden"
-            >
-              <input
-                id="my-drawer-2"
-                type="checkbox"
-                className="drawer-toggle lg:hidden"
-              />
-              <span className="sr-only">Toggle menu</span>
-              <Menu strokeWidth={2.5} className="w-full" />
-            </label>
-          </div>
-        </div>
+        {/* Drawer (Tablets) */}
+        <label
+          className="hidden md:flex lg:hidden btn text-white rounded-lg bg-blue-500 border-blue-500 shadow-none"
+          htmlFor="my-drawer-2"
+        >
+          <Menu />
+        </label>
       </div>
-    </header>
+    </div>
   );
 };
 

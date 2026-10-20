@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router";
 
-import { NavigationEyebrow, Navigation, Footer, FAB } from "~/components";
+import { Navigation, Footer, MobileDock } from "~/components";
 
 const MainLayout = () => {
   return (
     <>
-      <NavigationEyebrow />
       <Navigation>
         <Outlet />
       </Navigation>
       <Footer />
-      <FAB />
+      <MobileDock />
     </>
   );
 };
