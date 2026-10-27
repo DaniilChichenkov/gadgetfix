@@ -1,13 +1,16 @@
 import { House, LayoutGrid, MapPin, PencilLine } from "lucide-react";
+import { NavLink, useParams } from "react-router";
 
 const dockItems = [
-  { id: "home", label: "Главная", icon: House },
-  { id: "services", label: "Услуги", icon: LayoutGrid },
-  { id: "request", label: "Заявка", icon: PencilLine },
-  { id: "contacts", label: "Контакты", icon: MapPin },
+  { id: "home", label: "Главная", icon: House, to: "/" },
+  { id: "services", label: "Услуги", icon: LayoutGrid, to: "services" },
+  { id: "request", label: "Заявка", icon: PencilLine, to: "a" },
+  { id: "contacts", label: "Контакты", icon: MapPin, to: "b" },
 ];
 
 export default function MobileDock() {
+  const { lang } = useParams();
+
   return (
     <>
       {/* Render after the footer to reserve space for the fixed dock. */}
@@ -26,23 +29,19 @@ export default function MobileDock() {
           backdrop-blur-xl md:hidden
         "
       >
-        {dockItems.map(({ id, label, icon: Icon }) => {
+        {dockItems.map(({ id, label, icon: Icon, to }) => {
           const isActive = id === "home";
 
           return (
-            <button
-              key={id}
-              type="button"
-              aria-current={isActive ? "page" : undefined}
-              className={`
-                transition-colors
-                focus-visible:outline-2
-                focus-visible:outline-offset-[-2px]
-                focus-visible:outline-blue-500
-                ${
+            <NavLink
+              end
+              key={`mobile-dock-${id}`}
+              to={`/${lang}/${to}`}
+              className={({ isActive }) =>
+                `transition-colors ${
                   isActive ? "dock-active text-blue-500" : "hover:text-blue-500"
-                }
-              `}
+                }`
+              }
             >
               <Icon
                 aria-hidden="true"
@@ -51,7 +50,7 @@ export default function MobileDock() {
               />
 
               <span className="dock-label font-medium">{label}</span>
-            </button>
+            </NavLink>
           );
         })}
       </nav>

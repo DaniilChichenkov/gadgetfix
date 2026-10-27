@@ -3,8 +3,14 @@
    themes: light --default
  }
 
+.menu li > a[aria-current="page"] {
+  background-color: inherit !important;
+  box-shadow: inherit;
+}
+
 @theme {
   --breakpoint-mobile-s: 20rem;        /* 320px */
   --breakpoint-mobile-m: 23.4375rem;   /* 375px */
   --breakpoint-mobile-l: 26.5625rem;   /* 425px */
 }
+

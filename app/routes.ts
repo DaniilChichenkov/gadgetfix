@@ -12,6 +12,18 @@ export default [
 
   // Home page
   ...prefix("/:lang", [
-    layout("layouts/MainLayout.tsx", [index("routes/home.tsx")]),
+    layout("layouts/MainLayout.tsx", [
+      // Home page
+      index("routes/home.tsx"),
+      // Services page
+      route("services", "routes/services.tsx"),
+      // Services for device category
+      route("services/:deviceCategory", "routes/deviceCategoryService.tsx"),
+      // Selected service for certain device category (Ex.: Smartphones - Screen repair)
+      route(
+        "services/:deviceCategory/:selectedService",
+        "routes/selectedServiceForDeviceCategory.tsx",
+      ),
+    ]),
   ]),
 ] satisfies RouteConfig;

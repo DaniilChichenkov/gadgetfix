@@ -4,7 +4,6 @@ import {
   HomeHeroSlider,
   HomeWhatHappened,
   HomeGadgetTypeSelection,
-  HomeLocation,
   HomeBrands,
   InsuranceSection,
   MailRepairSection,

@@ -14,7 +14,7 @@ import {
   ChevronRight,
   ArrowUpRight,
 } from "lucide-react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useParams } from "react-router";
 
 // Logos
 import LogoSM from "~/src/gadgetFixLogoSM.png";
@@ -34,36 +34,38 @@ const drawerMenuConfig = {
     {
       text: "Услуги",
       icon: <Blocks />,
-      to: "/",
+      to: "services",
     },
     {
       text: "Цены",
       icon: <Tag />,
-      to: "/",
+      to: "prices",
     },
     {
       text: "Наши работы",
       icon: <Image />,
-      to: "/",
+      to: "works",
     },
     {
       text: "О компании",
       icon: <Info />,
-      to: "/",
+      to: "about",
     },
     {
       text: "Блог",
       icon: <FileText />,
-      to: "/",
+      to: "blog",
     },
     {
       text: "Контакты",
       icon: <MapPin />,
-      to: "/",
+      to: "contacts",
     },
   ],
 };
 const DrawerMenu = () => {
+  const { lang } = useParams();
+
   return (
     <ul className="menu bg-base-200 min-h-full w-11/12 md:w-6/12 p-4 rounded-bl-lg rounded-tl-lg [--menu-active-bg:transparent] [--menu-active-fg:inherit] overflow-y-scroll">
       <li>
@@ -114,9 +116,9 @@ const DrawerMenu = () => {
           className={`${i === 0 && "mt-3"} ${i < arr.length - 1 && "border-b"} py-2 border-gray-200`}
         >
           <NavLink
-            to={"/"}
+            to={`/${lang}/${item.to}`}
             className={({ isActive }) =>
-              `w-full flex justify-start items-center gap-5 font-bold text-lg`
+              `w-full flex justify-start items-center gap-5 font-bold text-lg ${isActive && "text-blue-500 bg-blue-50"}`
             }
           >
             {({ isActive }) => (
@@ -184,6 +186,8 @@ const DrawerMenu = () => {
 };
 
 const NavBar = () => {
+  const { lang } = useParams();
+
   return (
     <div className="navbar bg-base-100 max-w-7xl mx-auto shadow-none border-none">
       <div className="navbar-start">
@@ -202,7 +206,12 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">
           {drawerMenuConfig.navLinks.map((item) => (
             <li key={`menu-lg-${item.text}`}>
-              <a>{item.text}</a>
+              <NavLink
+                className={({ isActive }) => `${isActive && "text-blue-500"}`}
+                to={`/${lang}/${item.to}`}
+              >
+                {item.text}
+              </NavLink>
             </li>
           ))}
         </ul>
