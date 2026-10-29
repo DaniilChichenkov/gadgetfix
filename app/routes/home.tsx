@@ -11,6 +11,7 @@ import {
   LocationAndBenefitsSection,
   HomeProtectScreen,
   HomeFeedback,
+  HomeWorksExamples,
 } from "~/pages/home";
 
 export const loader = async () => {
@@ -29,6 +30,7 @@ const HomeRoute = () => {
       <HomeGadgetTypeSelection />
       <HomeProtectScreen />
       <RepairRequestSection />
+      <HomeWorksExamples />
       <HomeFeedback />
       <LocationAndBenefitsSection />
     </>
