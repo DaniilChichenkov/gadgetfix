@@ -67,7 +67,7 @@ const DrawerMenu = () => {
   const { lang } = useParams();
 
   return (
-    <ul className="menu bg-base-200 min-h-full w-11/12 md:w-6/12 p-4 rounded-bl-lg rounded-tl-lg [--menu-active-bg:transparent] [--menu-active-fg:inherit] overflow-y-scroll">
+    <ul className="menu z-100 bg-base-200 min-h-full w-11/12 md:w-6/12 p-4 rounded-bl-lg rounded-tl-lg [--menu-active-bg:transparent] [--menu-active-fg:inherit] overflow-y-scroll">
       <li>
         <div className="w-full flex justify-start items-center relative">
           <picture>
@@ -297,7 +297,7 @@ const Navigation = ({ children }: { children: React.ReactNode }) => {
         {/* Page content here */}
         <main className="flex-1 shrink-0">{children}</main>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-100">
         <label
           htmlFor="my-drawer-2"
           aria-label="close sidebar"

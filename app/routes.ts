@@ -15,15 +15,19 @@ export default [
     layout("layouts/MainLayout.tsx", [
       // Home page
       index("routes/home.tsx"),
+
+      // Services routes
       // Services page
       route("services", "routes/services.tsx"),
       // Services for device category
       route("services/:deviceCategory", "routes/deviceCategoryService.tsx"),
-      // Selected service for certain device category (Ex.: Smartphones - Screen repair)
+      // Selected service of certain device category (Ex.: Smartphones - Screen repair)
       route(
         "services/:deviceCategory/:selectedService",
         "routes/selectedServiceForDeviceCategory.tsx",
       ),
+
+      // Price routes
     ]),
   ]),
 ] satisfies RouteConfig;

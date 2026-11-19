@@ -21,7 +21,10 @@ const HomeWorksExamples = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   return (
-    <section aria-label="Защита экрана" className="px-4 py-8 sm:px-6 sm:py-12">
+    <section
+      aria-label="Защита экрана"
+      className="mobile-m:px-4 py-8 sm:px-6 sm:py-12"
+    >
       <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-3xl border border-blue-100 bg-blue-50 p-5 sm:p-8 lg:p-10 xl:p-12">
         <div
           aria-hidden="true"
@@ -29,8 +32,8 @@ const HomeWorksExamples = () => {
         />
 
         {/* Header */}
-        <div className="min-w-0 flex flex-col md:flex-row md:items-center md:justify-between w-full">
-          <div className="">
+        <div className="min-w-0 w-full grid grid-cols-1 md:grid-cols-3 md:items-center">
+          <div className="md:col-start-1 md:col-span-2">
             <p className="mb-2 text-xs font-semibold tracking-widest text-blue-500 uppercase flex justify-start items-center gap-2">
               <Image aria-hidden="true" className="size-6 shrink-0" />
               Примеры ремонта
@@ -44,6 +47,13 @@ const HomeWorksExamples = () => {
               Посмотрите, как меняются устройства после ремонта.
             </p>
           </div>
+
+          <Link
+            to={"/"}
+            className="btn bg-white lg:w-8/12 lg:ml-auto border border-blue-500 rounded-xl text-blue-500 hidden md:flex md:col-start-3 md:col-span-1 w-full"
+          >
+            Все работы <ArrowUpRight />{" "}
+          </Link>
         </div>
 
         {/* Content */}
@@ -54,16 +64,13 @@ const HomeWorksExamples = () => {
             onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
             slidesPerView={1}
             loop={true}
-            className="w-full md:col-start-2 lg:col-start-2 md:col-span-2 lg:col-span-3"
+            className="w-full md:col-start-1 md:col-span-3 lg:col-span-4"
             spaceBetween={20}
             breakpoints={{
               768: {
-                slidesPerView: 1,
-              },
-              1024: {
                 slidesPerView: 2,
               },
-              1440: {
+              1024: {
                 slidesPerView: 3,
               },
             }}
@@ -244,25 +251,26 @@ const HomeWorksExamples = () => {
 
           <Link
             to={"/"}
-            className="btn bg-white border border-blue-500 rounded-xl text-blue-500"
+            className="btn bg-white border border-blue-500 rounded-xl text-blue-500 md:hidden"
           >
             Все работы <ArrowUpRight />{" "}
           </Link>
 
           {/* CTA */}
-          <div className="w-full bg-white rounded-xl grid grid-cols-5 gap-5 p-4 border-blue-200 border">
-            <div className="col-start-1 col-span-1 flex justify-center items-center text-blue-500">
-              <Wrench size={32} className="shrink-0" />
+          <div className="w-full bg-white rounded-xl items-center grid grid-cols-1 md:grid-cols-5 gap-5 p-4 border-blue-200 border md:col-span-3 lg:col-span-4">
+            <div className="flex col-span-1 md:col-span-3 justify-start w-full items-center text-blue-500 gap-2 md:gap-4 lg:gap-6">
+              <Wrench className="shrink-0 size-8 md:size-10" />
+
+              <div>
+                <p className="mobile-s:text-sm mobile-m:text-lg text-lg leading-tight font-bold tracking-tight text-slate-950 sm:text-2xl lg:text-[30px]">
+                  Похожая проблема?
+                </p>
+                <p className="max-w-xl text-xs md:text-sm leading-relaxed text-slate-600">
+                  Поможем восстановить ваше устройство.
+                </p>
+              </div>
             </div>
-            <div className="col-start-2 col-span-4">
-              <p className="text-lg leading-tight font-bold tracking-tight text-slate-950 sm:text-2xl lg:text-[30px]">
-                Похожая проблема?
-              </p>
-              <p className="max-w-xl text-xs leading-relaxed text-slate-600">
-                Поможем восстановить ваше устройство.
-              </p>
-            </div>
-            <button className="btn col-start-1 col-span-5 text-white bg-blue-500 border-blue-500 gap-2 rounded-xl font-normal">
+            <button className="btn lg:w-8/12 lg:ml-auto col-start-1 col-span-1 md:col-start-4 md:col-span-2 text-white bg-blue-500 border-blue-500 gap-2 rounded-xl font-normal">
               Узнать стоимость <ArrowUpRight />
             </button>
           </div>

@@ -56,7 +56,7 @@ export default function LocationAndBenefitsSection() {
   return (
     <section
       aria-label="Наш салон и преимущества"
-      className="mx-auto grid w-full max-w-7xl px-4 lg:px-8 gap-5 py-8 md:py-12 lg:grid-cols-2"
+      className="mx-auto grid w-full max-w-7xl mobile-m:px-4 lg:px-8 gap-5 py-8 md:py-12 lg:grid-cols-2"
     >
       {/* Location card */}
       <article

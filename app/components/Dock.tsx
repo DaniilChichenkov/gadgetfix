@@ -1,11 +1,10 @@
-import { House, LayoutGrid, MapPin, PencilLine } from "lucide-react";
+import { House, LayoutGrid, MapPin, PencilLine, Menu } from "lucide-react";
 import { NavLink, useParams } from "react-router";
 
 const dockItems = [
   { id: "home", label: "Главная", icon: House, to: "/" },
   { id: "services", label: "Услуги", icon: LayoutGrid, to: "services" },
   { id: "request", label: "Заявка", icon: PencilLine, to: "a" },
-  { id: "contacts", label: "Контакты", icon: MapPin, to: "b" },
 ];
 
 export default function MobileDock() {
@@ -22,7 +21,7 @@ export default function MobileDock() {
       <nav
         aria-label="Мобильная навигация"
         className="
-          dock dock-md z-50
+          dock dock-md
           border-t border-slate-200/80
           bg-white/95 text-slate-500
           shadow-[0_-8px_30px_rgba(15,23,42,0.05)]
@@ -53,6 +52,12 @@ export default function MobileDock() {
             </NavLink>
           );
         })}
+
+        <label htmlFor="my-drawer-2">
+          <Menu aria-hidden="true" className="size-5" />
+
+          <span className="dock-label font-medium">Другое</span>
+        </label>
       </nav>
     </>
   );

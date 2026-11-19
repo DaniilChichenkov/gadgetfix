@@ -19,7 +19,10 @@ const HomeFeedback = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   return (
-    <section aria-label="Защита экрана" className="px-4 py-8 sm:px-6 sm:py-12">
+    <section
+      aria-label="Защита экрана"
+      className="mobile-m:px-4 py-8 sm:px-6 sm:py-12"
+    >
       <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-3xl border border-blue-100 bg-blue-50 p-5 sm:p-8 lg:p-10 xl:p-12">
         <div
           aria-hidden="true"

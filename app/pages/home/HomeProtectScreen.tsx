@@ -4,17 +4,20 @@ import screenProtectionImage from "~/src/screen-protection.png";
 
 export default function ScreenProtectionCTA() {
   return (
-    <section aria-label="Защита экрана" className="px-4 py-8 sm:px-6 sm:py-12">
+    <section
+      aria-label="Защита экрана"
+      className="mobile-m:px-4 py-8 sm:px-6 sm:py-12"
+    >
       <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-3xl border border-blue-100 bg-blue-50 p-5 sm:p-8 lg:p-10 xl:p-12">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-white/70 to-blue-100/60"
         />
 
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-x-8">
+        <div className="grid gap-6 md:grid-cols-[1.1fr_1fr] lg:gap-x-8">
           {/* Heading */}
-          <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-            <p className="mb-2 text-xs font-semibold tracking-widest text-blue-500 uppercase flex justify-start items-center gap-2">
+          <div className="min-w-0 md:col-start-1 md:row-start-1">
+            <p className="mb-2 text-xs font-semibold tracking-widest text-blue-500 uppercase flex items-center gap-2">
               <Shield aria-hidden="true" className="size-6 shrink-0" />
               Защита экрана
             </p>
@@ -24,14 +27,14 @@ export default function ScreenProtectionCTA() {
               <span className="block">до первой царапины</span>
             </h2>
 
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-600">
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-600 text-start">
               Подберём стекло или плёнку под вашу модель и аккуратно установим в
               салоне.
             </p>
           </div>
 
           {/* Below the heading on mobile; right column on desktop. */}
-          <div className="relative flex min-w-0 items-center justify-center lg:col-start-2 lg:row-span-3 lg:row-start-1">
+          <div className="relative flex min-w-0 items-center justify-center md:col-start-2 md:row-span-3 md:row-start-1">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[90%] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100/70"
@@ -49,7 +52,7 @@ export default function ScreenProtectionCTA() {
           </div>
 
           {/* Protection options */}
-          <div className="grid min-w-0 gap-3 items-start sm:grid-cols-2 lg:col-start-1 lg:row-start-2 lg:grid-cols-1 xl:grid-cols-2">
+          <div className="grid min-w-0 gap-3 lg:items-start sm:grid-cols-2 md:col-start-1 md:row-start-2 md:grid-cols-1 xl:w-8/12">
             <div className="flex items-start gap-3 rounded-2xl border border-blue-100 bg-white/90 p-4">
               <Smartphone
                 aria-hidden="true"
@@ -86,16 +89,16 @@ export default function ScreenProtectionCTA() {
           </div>
 
           {/* CTA */}
-          <div className="lg:col-start-1 lg:row-start-3">
+          <div className="lg:col-start-1 lg:row-start-3 w-full xl:w-8/12">
             <button
               type="button"
-              className="inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-3xl bg-blue-500 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-50 sm:w-auto"
+              className="inline-flex min-h-12 w-full btn items-center justify-center gap-3 rounded-3xl bg-blue-500 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-50"
             >
               Подобрать защиту
               <ArrowUpRight aria-hidden="true" className="size-5 shrink-0" />
             </button>
 
-            <p className="mt-3 text-center text-sm leading-relaxed text-slate-500 sm:text-left">
+            <p className="mt-3 text-center text-sm leading-relaxed text-slate-500">
               Поможем выбрать подходящий вариант
             </p>
           </div>

@@ -15,7 +15,7 @@ export default function InsuranceSection() {
   return (
     <section
       aria-labelledby="insurance-title"
-      className="mx-auto w-full max-w-7xl overflow-hidden rounded-3xl bg-[#202020] p-3 text-white md:grid md:grid-cols-[1.2fr_1fr] md:gap-4 md:p-5 lg:gap-6 lg:p-6"
+      className="mx-auto w-full max-w-7xl overflow-hidden xl:rounded-3xl bg-[#202020] p-3 text-white md:grid md:grid-cols-[1.2fr_1fr] md:gap-4 md:p-5 lg:gap-6 lg:p-6"
     >
       {/* Insurance offer */}
       <div className="relative isolate min-h-[260px] overflow-hidden rounded-2xl p-5 md:min-h-[300px] md:p-4 lg:p-5">
