@@ -14,7 +14,7 @@ import {
   ChevronRight,
   ArrowUpRight,
 } from "lucide-react";
-import { Link, NavLink, useParams } from "react-router";
+import { Link, NavLink, useLocation, useParams } from "react-router";
 
 // Logos
 import LogoSM from "~/src/gadgetFixLogoSM.png";
@@ -66,6 +66,22 @@ const drawerMenuConfig = {
 const DrawerMenu = () => {
   const { lang } = useParams();
 
+  const handleDrawerLinkClick = () => {
+    const drawerToggle = document.getElementById(
+      "my-drawer-2",
+    ) as HTMLInputElement;
+    if (drawerToggle) {
+      drawerToggle.checked = false;
+    }
+  };
+
+  const { pathname } = useLocation();
+  const calculateNavToPath = (langCode: string) => {
+    const pathArray = pathname.split("/");
+    const path = pathArray.slice(2, pathArray.length);
+    return `/${langCode}/${path.join("/")}`;
+  };
+
   return (
     <ul className="menu z-100 bg-base-200 min-h-full w-11/12 md:w-6/12 p-4 rounded-bl-lg rounded-tl-lg [--menu-active-bg:transparent] [--menu-active-fg:inherit] overflow-y-scroll">
       <li>
@@ -97,7 +113,7 @@ const DrawerMenu = () => {
             {drawerMenuConfig.langSelector.map((item) => (
               <NavLink
                 key={item.code}
-                to={`/${item.code}`}
+                to={calculateNavToPath(item.code)}
                 className={({ isActive }) =>
                   `${isActive ? "bg-blue-500 text-white" : "bg-gray-100 "} -ms-px rounded-e-sm border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 disabled:pointer-events-auto disabled:opacity-50`
                 }
@@ -117,6 +133,7 @@ const DrawerMenu = () => {
         >
           <NavLink
             to={`/${lang}/${item.to}`}
+            onClick={handleDrawerLinkClick}
             className={({ isActive }) =>
               `w-full flex justify-start items-center gap-5 font-bold text-lg ${isActive && "text-blue-500 bg-blue-50"}`
             }
@@ -188,6 +205,13 @@ const DrawerMenu = () => {
 const NavBar = () => {
   const { lang } = useParams();
 
+  const { pathname } = useLocation();
+  const calculateNavToPath = (langCode: string) => {
+    const pathArray = pathname.split("/");
+    const path = pathArray.slice(2, pathArray.length);
+    return `/${langCode}/${path.join("/")}`;
+  };
+
   return (
     <div className="navbar bg-base-100 max-w-7xl mx-auto shadow-none border-none">
       <div className="navbar-start">
@@ -238,22 +262,37 @@ const NavBar = () => {
           }
         >
           <li>
-            <a className="flex justify-between items-center bg-blue-500 text-white rounded-lg">
+            <NavLink
+              to={calculateNavToPath("et")}
+              className={({ isActive }) =>
+                `flex justify-between items-center rounded-lg ${isActive ? "bg-blue-500! text-white!" : ""}`
+              }
+            >
               Eesti
               <span>EE</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a className="flex justify-between items-center">
+            <NavLink
+              to={calculateNavToPath("en")}
+              className={({ isActive }) =>
+                `flex justify-between items-center rounded-lg ${isActive ? "bg-blue-500! text-white!" : ""}`
+              }
+            >
               English
               <span>EN</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a className="flex justify-between items-center">
+            <NavLink
+              to={calculateNavToPath("ru")}
+              className={({ isActive }) =>
+                `flex justify-between items-center rounded-lg ${isActive ? "bg-blue-500! text-white!" : ""}`
+              }
+            >
               Русский
               <span>RU</span>
-            </a>
+            </NavLink>
           </li>
         </ul>
 
